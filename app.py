@@ -3,7 +3,10 @@ import xgboost as xgb
 import pickle
 
 # Load the data
-df = pd.read_csv("data.csv")
+@st.cache
+def load_data(file):
+    df = pd.read_csv(file)
+    return df
 
 # Create a sidebar where users can select the features they want to use
 features = df.columns.tolist()
